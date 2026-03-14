@@ -1,0 +1,19 @@
+Topic: AI SUBSETS 5
+
+This fifth one is my favorite, and it is generative AI. From the name, you already know the
+meaning. It's about generating stuff. I like it because it's not just about analyzing data. It's about
+generating things from scratch. You see those funny videos of Cristiano Ronaldo performing at a
+concert or UJZ playing a football match? Those are products of Gen AI. As a matter of fact, the
+ultimate goal of Gen AI is that you imagine something, you prompt the machine, and it gives you
+the results. I should also mention that it's not always those complex applications. Even those
+simple utilities, like when you prompt ChatGPT to write an essay for you on a particular topic, it's
+still Gen AI. So it's all about unlocking creativity, and you see it in every industry nowadays, from
+art to music to content creation to marketing. You see generative AI. Of course, there are other
+subsets as well, like robotics, like evolutionary algorithms, and even reinforcement learning. I
+like that one too, because you see people building agents that can beat humans at games like
+chess. Also, it is important that we recognize that these technologies we are discussing might
+be using just one or a combination of these subsets. Take, for example, Alexa, the voice
+assistant. It's at least a combination of machine learning, deep learning, and natural language
+processing.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #ChatGPT #OpenAI

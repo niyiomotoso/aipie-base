@@ -1,0 +1,19 @@
+Topic: AI AGENT
+
+A few months ago, someone reached out to me from an organization. So he said they need a
+chatbot on their website. You know that simple annoying one that you just have a conversation
+with and tell it to give you a human. But then I told him the world is past that now. So instead, I
+did a POC of a proper AI agent that knows about the company, can answer any FAQ, and route
+conversation to the right person in the company. So what this agent is doing basically, it's a
+combination of a chatbot, a front desk admin, and a customer service rep. So with this agent,
+you can talk to it naturally, like you're talking to another human. Of course, it's also acting as a
+front desk admin, a customer service agent, and it's able to route conversations to the right
+person in the organization. So tell me why the organization will keep employing people for those
+roles. Let me be clear, this AI agent cannot do everything that a human service rep can do, but
+you see those very basic repetitive things, they can do it, and they will do it better. And like I
+mentioned in the previous video, there's a part of every profession that AI is coming for. Your job
+is to identify that part and see how you can upscale. And to upscale, you need to learn how to
+use these AI tools that we have now to your advantage. And this is regardless of any
+profession.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #AIAgents #Automation

@@ -1,0 +1,15 @@
+Topic: MEANING OF GPT
+
+GPT is actually an acronym for Generative Pre-trained Transformer. I know that sounds like a
+robot's full name, so let me explain. Generative means it's able to create those textual and
+visual responses that you see. Pre-trained is talking about the fact that it already has a very
+wide knowledge base. In fact, when I was going through the white paper for GPT-3, the raw
+training set was about 45 terabytes in plain text. And lastly, Transformer explains the ability of
+the model to take those prompts, process it in a very smart way, and also focus on the parts that
+matter. And this transformer is the brain behind everything we do with ChatGPT. The thing is,
+the different versions of GPTs that we use now, even though they are very powerful, they are
+just the beginning. We are looking at a future where these transformers are able to do things
+that our individual brains can't even compete. So will the transformer take your job? Maybe,
+unless you learn how to use it.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #ChatGPT #OpenAI

@@ -1,0 +1,21 @@
+Topic: AI SUBSETS 2
+
+You see all those Netflix and YouTube video suggestions based on what you have watched
+previously. That's machine learning. And also when you scroll Instagram and TikTok, you see
+suggestions based on the videos you have watched previously. That's also machine learning.
+Even on e-commerce platforms like Amazon, when you go through their product listing page,
+you see new items based on your search history or some items you've ordered in the past.
+That's also machine learning. And please, let's not confuse this with recommendation systems
+that we've always had on the internet. Those ones are based on product families, tags,
+categories, and what have you. With machine learning, these recommendation systems, they
+become way more advanced, they become dynamic, and most importantly, they become
+personalized, so that the result you see is based on the pattern the machine has learned from
+you. The first AI discussion I attended was 12 years ago. That was when I was an
+undergraduate. And I remember the speaker mentioned one thing that has stuck with me to
+date. He said, when machines learn, they become artificially intelligent. Again, when machines
+learn, they become artificially intelligent. That's the absolute relationship between machine
+learning and artificial intelligence. Machines learn about you, about things, about the world, and
+it becomes artificially intelligent. So machine learning is absolutely the backbone of artificial
+intelligence.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation

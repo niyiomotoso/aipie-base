@@ -1,0 +1,24 @@
+Topic: AI MODELS
+
+If you have spent a lot of time on the internet recently, you would have come across the term AI
+model, and I bet you really want to know what it means. I think one of the best ways to explain
+things generally is using analogies. For example, if you can understand how birds fly, you are
+very close to understanding how airplanes fly as well. To understand models, let's think of AI
+itself as transportation. That said, AI models are simply like vehicles. In the world of AI, a model
+is simply any system that you've trained to make predictions. So next time when you hear AI
+models, just think of any car, like a Mercedes-Benz, like a Honda, like a Toyota. But then, what
+are LLMs and why are they different from other models? LLM simply means large language
+model. You know there are cars and there are cars. For example, Tesla Cybertruck. If you go to
+Tesla today and you say you want a Tesla Cybertruck, you're basically saying you want a car
+that is electric, that is luxurious, and can self-drive. And that's not every car you see on the road.
+So it's a special car. That's the way LLMs are. They are special models. So in the AI world,
+LLMs are models that have been trained on a large scale and more importantly, they are able to
+generate human-like responses. So example would be ChatGPT models, DeepSeek models,
+Gemini models, and the rest. So all Cybertrucks are cars, but not all cars are Cybertrucks. In the
+same way, all LLMs are models, but not all models are LLMs. In terms of ownership, the way
+Tesla owns Cybertruck and Volkswagen owns Lamborghini, that's exactly the same way OpenAI
+owns ChatGPT models and Google owns Gemini models. So to summarize, think of AI
+generally as transportation, models as the vehicles, and LLMs as special vehicles with the
+ability to do certain things.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #ChatGPT #OpenAI

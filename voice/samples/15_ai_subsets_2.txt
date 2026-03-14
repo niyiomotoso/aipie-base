@@ -1,0 +1,11 @@
+Topic: AI SUBSETS 2
+
+The second one is Deep Learning. From the name, it's about learning deeper. Using machine
+learning, it's quite broad, and that's where deep learning comes in. It narrows the scope and
+takes it to the next level. For example, self-driving cars, voice assistants like Alexa that's able to
+pick your voice when you prompt it, and even those deep facial recognition systems at the
+airport, those are real-life applications of deep learning. Ultimately, the goal of deep learning is
+to mimic our brain. To achieve this, machines need to take a huge amount of data, learn very
+complex patterns, and train up their accuracy.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #Prompting #PromptTips

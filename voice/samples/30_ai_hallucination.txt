@@ -1,0 +1,21 @@
+Topic: AI HALLUCINATION
+
+ChatGPT can lie to you, and if you're not careful, it will land you in big trouble. It is called AI
+hallucination. I will give you some examples on how you can fix it. Hallucination is when
+ChatGPT makes up answers that sound legit, but they are completely false. It could be in form
+of fake data, fake sources, or references that don't even exist at all. For example, you ask
+ChatGPT to help you rewrite your CV, and then it goes ahead to add that you led a NASA space
+mission in 2019, and you've never worked in NASA in your life, but AI has made it sound so
+real. That's hallucination. Another example, you ask ChatGPT, how can I open a GTBank
+account? And it says, step one, download the mobile app. Step two, enter your social security
+number. That doesn't make sense, Abhi, because we don't use social security number in
+Nigeria. But the stupid ChatGPT can still tell you that. So why does this hallucination happen?
+It's because ChatGPT is not a fact-checker in the traditional sense. It's more of a guide that is
+very good at guessing what the right answer is. Let me tell you two things you can do to fix this.
+Number one, every time you use ChatGPT to do something very important, always ask for
+sources. If it can't back it up, don't trust it. Number two, when you're asking these questions, be
+very, very specific. If your question is not clear, it will confuse the AI. The clearer your question
+is, the lesser the chances of ChatGPT lying to you. I made a free guide that will teach you
+better.
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #ChatGPT #OpenAI

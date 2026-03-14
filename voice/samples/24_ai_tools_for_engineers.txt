@@ -1,0 +1,20 @@
+Topic: AI TOOLS FOR ENGINEERS
+
+If you're a software engineer or a data scientist, or you write any form of code, once your code
+editor is not AI-enabled by now, I think you need to do better. Let me give you three options you
+can try out for free. The first one is Cursor. Cursor is VS Code plus AI. You probably have heard
+people use the word vibe coding. That's just one of the many things possible with agent mode in
+Cursor. Another reason I recommend Cursor is because of the community. Right now, Cursor
+definitely has the largest developer community among AI editors. My second option is GitHub
+Copilot. The reason for Copilot is because it doesn't matter which ID you are using right now. I'm
+very sure that there's a Copilot plugin that works for it. So with GitHub Copilot, you don't need to
+change your ID. It has a very large community as well, but what I've observed is that Copilot is
+playing catch-up with Cursor for the most part. My third option is Windsurf. It's also my referred
+Codium. I think it's just special because it's lightweight and in terms of pricing, it's cheaper than
+Cursor. You know, just like traditional software, right? You can achieve almost the same thing
+with these different options. The choice that people make depend on factors like subscription
+cost, which AI model is available within the editor, and how data privacy is handled. But
+regardless of the choice you make, always remember to use AI tools as an assistant and not a
+replacement for your brain because we are not there yet. Have you tried these code editors?
+
+#AI #ArtificialIntelligence #Tech #TechTok #Reels #InstagramReels #AIEducation #FutureOfWork #Productivity #Career #TechCareer #LearnAI #AITools #Innovation #CursorAI #Coding
