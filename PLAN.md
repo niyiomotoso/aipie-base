@@ -25,176 +25,153 @@
 
 ---
 
-## Phase 1: Data Collection -- Reddit
-**Goal:** Collect trending AI/tech/finance posts from Reddit.
+## Phase 1: Data Collection -- Reddit ✅
+**Goal:** Collect trending AI/tech/business posts from Reddit.
+
+### Approach:
+Uses Reddit's **public JSON endpoints** (no API key, no auth needed).
+Reddit killed self-service API keys in Nov 2025 (Responsible Builder Policy),
+so we append `.json` to subreddit URLs instead of using PRAW.
 
 ### Steps:
-1. Write `pipelines/ingest_reddit.py` that uses PRAW to:
-   - Pull top 100 hot posts from target subreddits
-   - Extract: title, body, score, comment count, URL, timestamp
+1. ✅ Write `pipelines/ingest_reddit.py` using public JSON endpoints:
+   - Pull hot + top posts from target subreddits
+   - Extract: title, selftext, score, upvote_ratio, comment count, URL, timestamp
+   - Dedup by permalink, filter by age, sort by score
    - Save to `data/raw_reddit.json`
-2. Define the target subreddits list (AI/tech/finance focused)
-3. Wire up the `/discover-trends` skill to run this script
+2. ✅ Define subreddit list (non-technical, general audience)
+3. Wire up the `/discover-trends` skill to run this script (done in Phase 2+)
 
-### Default subreddits (we can adjust):
+### Subreddits (non-technical, consumer-focused):
 ```
-r/artificial, r/MachineLearning, r/OpenAI, r/ChatGPT, r/LocalLLaMA,
-r/technology, r/programming, r/startups, r/singularity,
-r/finance, r/fintech, r/wallstreetbets
+r/artificial, r/ChatGPT, r/OpenAI, r/singularity,
+r/technology, r/startups, r/Entrepreneur, r/SaaS,
+r/productivity, r/fintech, r/wallstreetbets
 ```
 
 ### Test:
-- [ ] `python pipelines/ingest_reddit.py` runs and saves real data to `data/raw_reddit.json`
-- [ ] JSON contains posts with title, score, num_comments, created timestamp
-- [ ] No auth errors, no rate limit errors
+- [x] `python pipelines/ingest_reddit.py` runs and saves real data to `data/raw_reddit.json`
+- [x] JSON contains posts with title, score, num_comments, created timestamp
+- [x] No auth errors, no rate limit errors
+- [x] 1,446 unique posts collected from 11 subreddits
 
-### Checkpoint -- I'll need from you:
-- **Create a Reddit account** at https://www.reddit.com/register (if you don't have one)
-- **Register a Reddit app** at https://www.reddit.com/prefs/apps:
-  1. Click "create another app..."
-  2. Name: `aipie-trends`
-  3. Type: select "script"
-  4. Redirect URI: `http://localhost:8080`
-  5. Click "create app"
-  6. Give me the **client_id** (string under the app name) and **client_secret**
-- **Confirm or adjust the subreddit list** above
+### Checkpoint:
+- ✅ No credentials needed (public JSON endpoints)
+- ✅ Subreddit list adjusted per user preference (non-technical audience)
 
 ---
 
-## Phase 2: Data Collection -- Hacker News & YouTube
+## Phase 2: Data Collection -- Hacker News & YouTube ✅
 **Goal:** Add two more reliable, free data sources.
 
 ### Steps:
-1. Write `pipelines/ingest_hn.py`:
-   - Hit HN Firebase API (`topstories.json`, `beststories.json`)
-   - Pull top 200 stories with scores, comment counts, URLs
-   - Save to `data/raw_hn.json`
-2. Write `pipelines/ingest_youtube.py`:
-   - Use yt-dlp to extract metadata from trending tech YouTube channels
-   - Pull recent videos with view counts, like counts, titles
-   - Save to `data/raw_youtube.json`
-3. Update `/discover-trends` skill to run all three ingest scripts
+1. ✅ Write `pipelines/ingest_hn.py`:
+   - HN Firebase API (topstories, beststories, newstories)
+   - Parallel fetching with ThreadPoolExecutor (20 workers)
+   - 477 stories collected in test run
+2. ✅ Write `pipelines/ingest_youtube.py`:
+   - Uses yt-dlp search (no API key needed)
+   - 8 search queries targeting AI tools, news, business, productivity
+   - 110 unique videos collected in test run
+3. Update `/discover-trends` skill to run all ingest scripts (Phase 9)
 
 ### Test:
-- [ ] `python pipelines/ingest_hn.py` saves real HN data
-- [ ] `python pipelines/ingest_youtube.py` saves real YouTube data
-- [ ] All three sources produce valid JSON with consistent schema
+- [x] `python pipelines/ingest_hn.py` saves real HN data (477 stories)
+- [x] `python pipelines/ingest_youtube.py` saves real YouTube data (110 videos)
+- [x] All three sources produce valid JSON
 
-### Checkpoint -- I'll need from you:
-- **A list of 5-10 YouTube channels** you follow for AI/tech content (so we scrape the right ones). Examples: MKBHD, Fireship, Two Minute Papers, AI Explained, etc. Give me channel names or URLs.
+### Checkpoint:
+- ✅ No credentials needed for either source
+- ✅ YouTube uses trending search instead of specific channels (per user preference)
 
 ---
 
-## Phase 3: Data Collection -- Google Trends + Optional Sources
-**Goal:** Add Google Trends and optionally TikTok/Instagram/Facebook.
+## Phase 3: Data Collection -- Google Trends ✅
+**Goal:** Add Google Trends as a signal for what the general public is searching.
 
 ### Steps:
-1. Write `pipelines/ingest_trends.py`:
-   - Use trendspyg to pull trending searches for AI/tech/finance keywords
-   - Save to `data/raw_trends.json`
-2. (Optional) Write `pipelines/ingest_tiktok.py`:
-   - Use TikTokApi to pull trending videos related to AI/tech
-   - Requires your ms_token cookie
-3. (Optional) Write `pipelines/ingest_instagram.py`:
-   - Use Instaloader to pull from AI/tech hashtag feeds
-   - Requires your Instagram login
+1. ✅ Write `pipelines/ingest_trends.py`:
+   - Uses trendspyg RSS feeds (fast, no browser needed)
+   - Pulls from 4 English-speaking regions (US, GB, CA, AU)
+   - Deduplicates cross-region trends, merges geo info
+   - 37 unique trends collected in test run
+2. Skipped TikTok/Instagram/Facebook (not needed for now)
 
 ### Test:
-- [ ] `python pipelines/ingest_trends.py` saves Google Trends data
-- [ ] (If enabled) TikTok and Instagram scripts produce data or gracefully fail
-- [ ] All data files follow the same schema: title, text, score, source, timestamp
+- [x] `python pipelines/ingest_trends.py` saves Google Trends data (37 trends)
+- [x] Trends include associated news articles for context
 
-### Checkpoint -- I'll need from you:
-- **Google Trends keywords** to track (defaults: "artificial intelligence", "AI tools", "ChatGPT", "tech layoffs", "fintech", "crypto"). Confirm or adjust.
-- **(Optional) For TikTok:** Your `ms_token` cookie. To get it:
-  1. Open TikTok in Chrome
-  2. Open DevTools (Cmd+Option+I) > Application > Cookies
-  3. Find the `ms_token` cookie and copy its value
-- **(Optional) For Instagram:** Your Instagram username and password (used locally only, never stored in code)
+### Note:
+Google Trends returns general daily trends (not tech-filtered). The clustering
+phase (Phase 4) will cross-reference these with Reddit/HN/YouTube to surface
+AI/tech-relevant ones. Tech topics do appear (e.g., "anthropic" was trending).
 
 ---
 
-## Phase 4: Topic Clustering & Deduplication
+## Phase 4: Topic Clustering & Deduplication ✅
 **Goal:** Merge data from all sources, remove duplicates, cluster into topics.
 
+### Approach:
+Uses BERTopic with tuned UMAP/HDBSCAN for initial clustering, then KMeans
+sub-clustering to break apart oversized clusters (>50 items).
+
 ### Steps:
-1. Write `pipelines/cluster.py`:
-   - Load all `data/raw_*.json` files
-   - Merge into unified format
-   - Use sentence-transformers (`all-MiniLM-L6-v2`) to embed all titles+summaries
-   - Deduplicate at 0.85 cosine similarity threshold
-   - Run BERTopic clustering to group posts into topics
-   - Save to `data/clustered_topics.json`
-2. Each topic gets: representative title, source count, total engagement, list of sources
+1. ✅ Write `pipelines/cluster_topics.py`:
+   - Loads all raw data, normalizes into common schema
+   - Embeds with sentence-transformers (all-MiniLM-L6-v2)
+   - Clusters with BERTopic (UMAP n_components=10, HDBSCAN min_cluster_size=5)
+   - Sub-clusters oversized topics with KMeans
+   - Sorts by cross-source coverage + engagement
+2. ✅ Each topic gets: keywords, representative title, source counts, engagement totals
 
-### Test:
-- [ ] `python pipelines/cluster.py` runs without errors
-- [ ] Obvious duplicates (same story from Reddit and HN) are merged
-- [ ] Topics make sense (not random groupings)
-- [ ] Output shows topic name, post count, total engagement, sources
+### Results:
+- 73 topic clusters from 2,070 input items
+- 62 multi-source clusters, 16 with 3+ sources
+- Cluster sizes: 5-114 items (median: 11)
 
-### Checkpoint -- I'll need from you:
-- Review the clustered output. I'll show you the top 20 topics and ask: "Do these make sense? Any weird groupings?"
+### Checkpoint:
+- ✅ Clusters look coherent (Anthropic/Pentagon, ChatGPT Atlas, AI tools, etc.)
 
 ---
 
-## Phase 5: Trend Scoring & Ranking
+## Phase 5: Trend Scoring & Ranking ✅
 **Goal:** Score topics by velocity, engagement, relevance, and novelty.
 
 ### Steps:
-1. Add velocity scoring to `pipelines/cluster.py` or new `pipelines/score.py`:
-   - Velocity: recent engagement vs. baseline (accelerating = high score)
-   - Engagement: total upvotes + comments across sources
-   - Relevance: cosine similarity to your niche keywords (AI, tech, finance)
-   - Novelty: how different from previous weeks' topics
-2. Composite score with configurable weights
-3. Write `/score-topics` skill that runs scoring and presents ranked results
-4. Save scored output to `data/scored_topics.json`
+1. ✅ Write `pipelines/score_topics.py`:
+   - Velocity (0.30): cross-source coverage + volume (log scale)
+   - Engagement (0.25): total engagement log-normalized against dataset max
+   - Relevance (0.30): semantic similarity to 12 niche keyword phrases
+   - Novelty (0.15): cluster size (smaller=more novel) + keyword specificity
+2. ✅ Composite score with configurable weights
+3. ✅ Relevance filter (default 0.25) drops off-niche topics (sports, celebrities)
+4. ✅ Saves top N scored topics to `data/scored_topics.json`
 
-### Test:
-- [ ] Top 10 topics are genuinely interesting and trending
-- [ ] Topics that are clearly old news rank low
-- [ ] Scoring weights produce sensible rankings
-- [ ] Running `/score-topics` in Claude Code shows the ranked list
+### Results:
+- 73 clusters -> 38 relevant topics (35 filtered as off-niche)
+- Top 20 saved: AI tools, ChatGPT Atlas, Claude computer use, AI/SaaS, Anthropic/Pentagon, etc.
 
-### Checkpoint -- I'll need from you:
-- Review the top 10 ranked topics. Feedback: "Are these the kinds of things you'd actually want to make content about?"
-- Adjust scoring weights if needed (e.g., "I care more about controversy than velocity")
+### Checkpoint:
+- User to review top topics and confirm they're content-worthy (Phase 9 integration)
 
 ---
 
-## Phase 6: Voice Pack & Script Style Engine
-**Goal:** Build the RAG system that learns your writing style from your past scripts.
+## Phase 6: Voice Pack & Script Style Engine ✅
+**Goal:** Build the RAG system that learns Niyi's writing style from past scripts.
 
 ### Steps:
-1. Write `pipelines/index_voice.py`:
-   - Read all scripts from `voice/samples/`
-   - Chunk them into sections
-   - Embed with sentence-transformers
-   - Store in ChromaDB at `voice_db/`
-2. Write `pipelines/retrieve_similar.py`:
-   - Given a topic, query ChromaDB for the 5 most similar past scripts
-   - Output the retrieved scripts as context
-3. Write `/build-voice-pack` skill:
-   - Claude Code reads your scripts and generates:
-     - `voice/STYLE_GUIDE.md`
-     - `voice/HOOK_PATTERNS.md`
-     - `voice/CTA_PATTERNS.md`
-4. Test retrieval: given a topic like "AI replacing jobs", does it retrieve your most relevant past scripts?
+1. ✅ `pipelines/prep_voice_samples.py` — parsed CSV of 46 scripts into individual .txt files
+2. ✅ `pipelines/index_voice.py` — embeds scripts, stores in ChromaDB, provides `query_similar()` function
+3. ✅ Generated voice analysis files:
+   - `voice/STYLE_GUIDE.md` — tone, language patterns, signature phrases, content themes
+   - `voice/HOOK_PATTERNS.md` — 7 proven hook patterns with examples
+   - `voice/CTA_PATTERNS.md` — 5 CTA patterns with formula
 
-### Test:
-- [ ] `python pipelines/index_voice.py` indexes all scripts into ChromaDB
-- [ ] `python pipelines/retrieve_similar.py "AI replacing jobs"` returns 5 relevant scripts
-- [ ] `/build-voice-pack` generates a style guide that accurately describes YOUR voice
-- [ ] You read the style guide and say "yes, that sounds like me"
-
-### Checkpoint -- I'll need from you:
-- **Your 100+ past scripts** as text files in `voice/samples/`. Ideally:
-  - One script per `.txt` file
-  - Any naming convention is fine (e.g., `script_001.txt`, `ai_jobs.txt`, etc.)
-  - If they're all in one document, give me the document and I'll split them
-  - If they're in Notes/Notion/Google Docs, export them as text and drop them in the folder
-- **This is the most important input for the entire project.** The quality of generated scripts depends directly on the quality and quantity of your sample scripts.
+### Results:
+- 46 scripts indexed in ChromaDB (voice_db/)
+- Retrieval tested: "future of AI and jobs" → correctly returns "AI and Office Jobs Timeline"
+- Style guide captures: conversational tone, direct address, analogy-based explanations, Nigerian cultural flavor
+- User can add more scripts anytime and re-run to update
 
 ---
 
@@ -202,24 +179,22 @@ r/finance, r/fintech, r/wallstreetbets
 **Goal:** For each top topic, generate content angles and score how "scriptable" it is.
 
 ### Steps:
-1. Write `/extract-angles` skill:
-   - Claude Code reads scored topics from `data/scored_topics.json`
-   - For each top topic, generates 4 angles: AGREE, DISAGREE, CONTRARIAN, PRACTICAL
-   - Each angle includes: hook line, thesis, emotional appeal, risk level
+1. ✅ Updated `/extract-angles` skill:
+   - Reads scored topics from `data/scored_topics.json`
+   - **Web searches** each topic for current conversation context
+   - Generates 4 angles: AGREE, DISAGREE, CONTRARIAN, PRACTICAL
+   - Each angle includes: hook, thesis, emotion, risk level, key facts from research
+   - Scores scriptability and filters below 0.6
    - Saves to `data/angles.json`
-2. Add scriptability scoring:
-   - Claude Code evaluates: emotional charge, controversy, practical takeaway, novelty, simplicity
-   - Topics below threshold get filtered out
+2. ✅ `pipelines/retrieve_similar.py` — helper for retrieving similar past scripts
 
 ### Test:
 - [ ] `/extract-angles` produces 4 distinct angles per topic
-- [ ] Angles feel genuinely different (not just rephrased versions of each other)
-- [ ] Scriptability scores make sense (complex topics score low on simplicity)
+- [ ] Angles include real facts from web research
 - [ ] At least 5-7 topics pass the scriptability threshold
 
 ### Checkpoint -- I'll need from you:
 - Review the angles. "Would you actually use any of these hooks?"
-- Feedback on angle quality: "Too generic? Too edgy? Not edgy enough?"
 
 ---
 
@@ -227,28 +202,23 @@ r/finance, r/fintech, r/wallstreetbets
 **Goal:** Generate complete, ready-to-shoot scripts that sound like you.
 
 ### Steps:
-1. Write `/generate-scripts` skill:
-   - Loads voice guide, hook patterns, CTA patterns
-   - Retrieves similar past scripts from ChromaDB
-   - For each top topic + best angle, generates:
-     - 3 hook options
-     - Full 60-second script (~150-180 words)
-     - Caption for social media
-     - 3 comment prompts to drive engagement
+1. ✅ Updated `/generate-scripts` skill:
+   - Auto-loads voice guide, hook patterns, CTA patterns via dynamic context injection
+   - Retrieves similar past scripts from ChromaDB via `retrieve_similar.py`
+   - **Web searches** each topic for fresh facts and examples
+   - Generates per topic: 3 hooks, full script (~150-200 words), caption, 3 comment prompts
+   - Voice matching checklist built into the skill
    - Saves to `outputs/latest/scripts.json` and `outputs/latest/summary.md`
-2. Include a tone-check pass: Claude Code re-reads the generated script and checks if it matches your voice guide
 
 ### Test:
-- [ ] Generated scripts are ~150-180 words (60-second read)
-- [ ] Scripts follow your Hook → Journey Line → Story → Reality Check → CTA structure
-- [ ] The tone matches YOUR voice (not generic AI voice)
-- [ ] Hooks are compelling and varied across topics
-- [ ] Captions are platform-appropriate
+- [ ] Generated scripts are ~150-200 words
+- [ ] Scripts follow Hook → Journey Line → Story → Reality Check → CTA
+- [ ] The tone matches Niyi's voice (conversational, direct, analogies, Nigerian flavor)
+- [ ] Hooks are compelling and varied
 
 ### Checkpoint -- I'll need from you:
-- **Read the generated scripts out loud.** Do they sound like you? This is the critical test.
-- Feedback: "This one sounds like me / This one is too formal / This hook is fire / This CTA is weak"
-- We iterate on the voice guide and prompt until you're happy
+- **Read the generated scripts out loud.** Do they sound like you?
+- Feedback on voice, hooks, CTAs — we iterate until you're happy
 
 ---
 
@@ -256,17 +226,15 @@ r/finance, r/fintech, r/wallstreetbets
 **Goal:** Wire everything together into one command.
 
 ### Steps:
-1. Write `/weekly-batch` skill that orchestrates the full pipeline:
-   - Step 1: Run all ingest scripts (Reddit, HN, YouTube, Trends, optional sources)
-   - Step 2: Cluster and deduplicate
-   - Step 3: Score and rank topics
-   - Step 4: Generate angles for top 10
-   - Step 5: Filter by scriptability (keep top 5-7)
-   - Step 6: Generate scripts in your voice
-   - Step 7: Save everything to `outputs/YYYY-WNN/`
-   - Step 8: Show you a summary of what was produced
-2. Add error handling: if one source fails (e.g., TikTok is down), continue with the rest
-3. Add progress reporting: Claude Code tells you what step it's on
+1. ✅ Updated `/weekly-batch` skill that orchestrates the full pipeline:
+   - Step 1: Run all 4 ingest scripts (Reddit, HN, YouTube, Trends)
+   - Step 2: `python pipelines/cluster_topics.py`
+   - Step 3: `python pipelines/score_topics.py --top 20`
+   - Step 4: Generate angles with web research (Claude reasoning)
+   - Step 5: Generate scripts with RAG + web research (Claude reasoning)
+   - Step 6: Save to `outputs/YYYY-WNN/`
+   - Step 7: Present summary
+2. Error handling built into each ingest script (continues if a source fails)
 
 ### Test:
 - [ ] Type `/weekly-batch` in Claude Code
