@@ -1,7 +1,6 @@
 ---
 name: build-voice-pack
-description: Analyze the creator's past scripts to build a voice/style guide. Run this once after adding scripts to voice/samples/. Re-run when your style evolves.
-disable-model-invocation: true
+description: Re-index voice samples and regenerate the style guide. Run this after adding new scripts to voice/samples/.
 allowed-tools: Bash(python *), Read, Write, Glob
 ---
 

@@ -6,7 +6,7 @@ allowed-tools: Bash(python *), Read, Write
 
 Score and rank the collected topics.
 
-1. Execute `python pipelines/cluster.py` to deduplicate and cluster raw data
+1. Execute `python pipelines/cluster_topics.py` to deduplicate and cluster raw data
 2. Read `data/clustered_topics.json`
 3. For each topic, evaluate:
    - **Velocity**: Is it accelerating (rising fast) or already peaked?
