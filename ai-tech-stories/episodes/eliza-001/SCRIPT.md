@@ -30,4 +30,16 @@ What gets me is that today's AI is vastly more capable than ELIZA. But that huma
 - This anecdote is attributed to Weizenbaum's later account, rather than stated as independently verified. See RESEARCH.md C06 and S6/S7.
 - If the secretary scene becomes visually unworkable, replace with the documented 1966 published example, carefully labelled as a published dialogue and not a raw eyewitness transcript.
 - This is a narrative prototype, not a locked script. Prioritise whether it sounds like Niyi speaking naturally, not strict adherence to its sentences.
-- No forced subscribe/follow CTA.
+- No forced subscribe/follow CTA. A natural question is available if the delivery leaves room for it.
+
+## Optional audience question (not part of the original recording copy)
+
+After "I mean, imagine that. You know it's software, and yet you start treating it like somebody you can confide in", or at the very end, you could ask:
+
+"Have you ever caught yourself talking to an AI chatbot like there's actually a person on the other side?"
+
+Use it only if it sounds natural. It is not mandatory and does not replace the existing ending.
+
+## Plain-English check
+
+The original recording copy already describes ELIZA's pattern-and-rule replies in everyday language. If you improvise, feel free to give a concrete example: "That is, if you typed 'I'm worried about my job', it might pick up on those words and ask a question back, without actually understanding your situation." This is an illustrative example, not a verified verbatim output from the historical ELIZA program.

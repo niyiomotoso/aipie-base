@@ -1,0 +1,35 @@
+{
+  "id": "nvidia-002",
+  "title": "The gaming chips that helped change AI",
+  "subject": "NVIDIA, CUDA and AlexNet",
+  "story_type": "company_and_breakthrough",
+  "status": "draft_for_review",
+  "target_duration_seconds": 120,
+  "narrative": {
+    "central_question": "How did technology built for graphics become a major enabler of AI?",
+    "human_detail": "2012 model trained on two NVIDIA cards in a bedroom computer",
+    "audience_question": "Would you have invested in the CUDA platform in 2006 without knowing how big the opportunity might become?",
+    "audience_question_optional": true
+  },
+  "delivery": {
+    "script_is_guide": true,
+    "free_to_improvise": true,
+    "post_shoot_manual_script_required": false,
+    "plain_english_explanations": true
+  },
+  "postproduction": {
+    "preferred_transcription": "ElevenLabs",
+    "source_of_truth": "clean_recorded_speech",
+    "storyboard_generated_after_trimming": true
+  },
+  "files": {
+    "research": "RESEARCH.md",
+    "script": "SCRIPT.md",
+    "visual_ideas": "VISUAL_PREFLIGHT.md"
+  },
+  "approvals": {
+    "script": false,
+    "recording": false,
+    "final_video": false
+  }
+}

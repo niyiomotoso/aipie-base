@@ -11,9 +11,11 @@ A fascinating story told by a real person who is genuinely interested in what ha
 - Use 'I', 'me', personal observations and reactions when they genuinely add meaning.
 - Avoid third-person textbook scripts, fake autobiographical experiences and exaggerated dialogue.
 - Do not reduce narration to fragments or formulaic dramatic one-liners.
-- No obligation to end with a lesson, a question or a CTA.
+- No obligation to end with a lesson, a question or a CTA. But where the story genuinely invites an opinion, dilemma or personal reflection, include an optional conversational audience question at the beginning, middle or end. Never force generic engagement bait.
 - The audience should feel it has heard a great story, not been lectured.
 - Authentic technical perspective is welcome, but avoid jargon-heavy explanations.
+- **Plain English is central to the series promise.** Every key idea must be understandable and imaginable by someone without a technology background. When a phrase is technically accurate but abstract (e.g. 'recognise objects in photographs'), bridge it to a simple, concrete picture ('That is, imagine showing a computer a photo of a dog, and it tells you it's a dog').
+- Explain unfamiliar terms or mechanisms only when they matter. Use brief everyday analogies, tangible examples and conversational transitions such as 'that is', 'in other words' or 'imagine', rather than textbook definitions. Do not make explanations repetitive, condescending or technically misleading.
 
 ## Subjects
 
@@ -26,6 +28,7 @@ People, companies, countries, turning points, strange historical projects, rival
 3. Escalate tension with the unusual discovery or turning point.
 4. Pay off the opening and explain what happened.
 5. Offer a genuine first-person reflection if it earns its place.
+6. Consider a genuinely useful audience question if it arises naturally from the story; no forced ending CTA.
 
 Target 75-120 seconds as an experiment, not a strict limit. Each video should work without watching another episode first.
 
