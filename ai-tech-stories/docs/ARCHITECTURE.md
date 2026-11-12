@@ -1,61 +1,69 @@
-# Autonomous post-production: proposed architecture
+# Autonomous post-production: footage-first architecture
 
-## Purpose
+## Core rule
 
-Given a source-backed approved script, real footage uploaded to private S3 and a creative brief, Claude Code or Codex should be able to prepare a professional short documentary edit with limited human supervision. The same pipeline should survive unscripted wording, natural improvisations, retakes and imperfect delivery.
+**The approved recording script is a preparation document, not a verbatim specification for the final cut.** Niyi can improvise, paraphrase, change the order of a story, pause, add a genuine memory or add new comments. No manual "final script" submission is required after filming.
+
+The recorded performance becomes the source of truth for the actual spoken story. The original research remains useful for checking spontaneous factual assertions. A final transcript, cut decisions and detailed storyboard are generated from the media itself.
 
 ## Pipeline
 
-STORY DISCOVERY -> FACT-CHECKED SCRIPT -> VISUAL PRE-FLIGHT -> CAMERA RECORDING -> S3 INGEST -> TRANSCRIPTION + ALIGNMENT -> RETAKE ANALYSIS -> EDIT PLAN -> ASSET ACQUISITION / GENERATION -> TIMELINE COMPOSITION -> RENDER -> QA -> HUMAN APPROVAL
+RESEARCH -> RECORDING SCRIPT -> FILM -> PRIVATE S3 UPLOAD -> AUDIO EXTRACTION -> ELEVENLABS TIMESTAMPED TRANSCRIPT -> RETAKE / CONTINUITY ANALYSIS -> EDIT DECISION LIST -> CLEAN TALKING-HEAD MASTER -> UPDATED TIMECODED TRANSCRIPT -> FINAL STORYBOARD -> RIGHTS-VERIFIED ASSETS / ILLUSTRATIONS -> AUTOMATED ASSEMBLY -> QA -> HUMAN SIGN-OFF
 
-### 1. Editorial preparation
+### Before filming: intentionally light
 
-The script package contains a hook, source links, timeline, contested claims, narrative beats, on-camera recommendations, and visual suggestions. Approvals are recorded explicitly. Agents must not write shocking claims without attributable evidence.
+The creator needs only an approved spoken script. Research packs and lightweight visual feasibility notes may exist to prevent important historical claims or asset problems, but there is no need for a locked, timed storyboard. The script should invite natural improvisation and authentic anecdotes.
 
-### 2. Footage ingestion
+### After filming: S3 and immutable source files
 
-Upload original camera and audio recordings to a private S3 prefix such as s3://<private-bucket>/aipie-stories/<episode-id>/raw/. A local worker or remote render node downloads with IAM credentials and verifies checksums. Never store presigned links, secrets or raw footage in the Git repository.
+The raw camera recording is uploaded to a private S3 path, for example `s3://<bucket>/aipie-stories/<id>/raw/`. Index the files by clip ID, SHA-256, camera/audio metadata and ingest date. Use private credentials and never commit video files or signed links to the public repo. Locally extract audio to a transcription format with a maintained mapping to original video timeline and any offset for separately recorded sound.
 
-### 3. Transcription
+### Transcription: ElevenLabs is the preferred provider
 
-Create word-level timestamped speech-to-text plus speaker labels (if needed), confidence scores and silence boundaries. Capture actual words spoken. Script-to-speech alignment is fuzzy and supports paraphrasing, skipped sentences and repeat takes. Keep the complete raw transcript.
+Use the user's ElevenLabs skill when it is available to Claude Code or Codex, or implement a documented ElevenLabs Speech-to-Text/Scribe adapter. Request word-level timestamps so transcript words can be mapped to actual footage; diarization is optional for a single on-camera speaker. Preserve the full raw transcript including imperfect sentences, repeated attempts, filler and possible speech-recognition mistakes. Never make a speech recognition model rewrite the dialogue to match a pre-recording script.
 
-### 4. Retake detection and edit decision list
+Official docs at the time of design:
+- https://elevenlabs.io/docs/overview/capabilities/speech-to-text
+- https://elevenlabs.io/docs/api-reference/speech-to-text/convert
 
-Use acoustic pauses, transcript similarity, segment boundaries and repeated phrasing to propose preferred takes. Keep enough handles before and after cuts for natural transitions. Natural filler words can remain when they suit delivery. Never automatically delete wording that changes the argument. Low-confidence choices require a review flag.
+Model/version and supported parameters must be rechecked during implementation. ElevenLabs STT can accept video files too, but a deliberate audio-extraction stage preserves a clear A/V timing map and reduces transport complexity when appropriate.
 
-### 5. Visual planning
+### Select the best actual narration
 
-Align actual approved narration (not just original script timestamps) to visual beats. Each beat can show camera, archival still, verified footage, diagram, graphical timeline or clearly designated AI reconstruction. Timing is data, not a hard-coded visual effect.
+Detect complete/abandoned takes, repetitions, changes of mind and silent gaps by analysing the raw transcript, acoustic timing and video frames. Prefer semantically coherent, complete takes. **Do not** interpret script deviations as mistakes. Personal additions such as the creator mentioning a visit to the Computer History Museum in San Francisco should be retained when they genuinely contribute to the story. If he is discussing technology from an era, do not automatically imply he viewed the specific historical machine mentioned in the story.
 
-### 6. Asset acquisition
+Generate a conservative, non-destructive EDL with source clip IDs and in/out seconds. Avoid cutting all filler words, breathing and natural pauses. Keep handles around cuts, avoid audible clicks and jarring jump cuts, and escalate uncertain choices or factual contradictions to a reviewer.
 
-Search reputable archives and libraries, check rights BEFORE downloading into production, and record provenance, licence, permitted platforms and attribution. Use generators only for illustrative material and label reconstructions when they could otherwise be mistaken for evidence. Unknown rights fail closed.
+### Produce the clean master before the storyboard
 
-### 7. Composition
+Render a clean, intelligible talking-head video containing the selected narration only. Recalculate word timestamps into the **clean output's** clock using a source-to-output cut map and verify by re-listening or optional second-pass transcription. Generate a cleaned verbatim transcript. This transcript replaces the original recording script **for downstream timing and visual planning**, but doesn't overwrite it or the raw transcript.
 
-An agent creates JSON edit and scene plans. Deterministic CLI/video tools assemble:
-- Retained camera/audio segments
-- On-camera/B-roll transitions and crops
-- Historical still motion and simple diagrams
-- Readable mobile subtitles
-- Voice-first sound mixing and licensed music
-- 9:16 platform-ready export and review proxy
+### Dynamic storyboard
 
-FFmpeg is an initial rendering choice; other video compositors can be swapped in behind the same data contracts.
+Only after the clean master is stable, generate the detailed storyboard. Ground each scene in the exact words, timing, pacing, expressions and narrative beats of the footage. For each beat choose whether to keep Niyi on screen or overlay archival material, original diagrams, historical documents or clearly marked AI reconstructions. Use original research to inform factual accuracy. Revisit the storyboard if the cut changes.
 
-### 8. Quality assurance
+A pre-shoot visual idea list may still be helpful; it is never a requirement for filming and it is not a final timecoded storyboard.
 
-Validate duration, resolution, audio continuity, clipping, scene gaps, caption safe zones, consistency between transcript and retained audio, asset licensing, misleading imagery and export format. Obtain editorial approval for final publish.
+### Asset collection and deterministic composition
 
-## Human checkpoints
+Search for relevant visuals and retain licensing/provenance/attribution evidence. Only rights-verified assets go into output renders. Use AI-generated imagery for illustrative reconstructions with appropriate labels, never as fake archive evidence. Render a repeatable 9:16 timeline with FFmpeg or an equivalent compositor, speech-first audio, readable captions and scene placements derived from clean output timestamps.
 
-Research sign-off; script voice sign-off; hard-to-source visual review; ambiguous retake choices; final-video approval. We can loosen low-risk gates only after successful real-world tests.
+### QA, review and hand-off
 
-## Design decisions
+Verify audio continuity, omitted/duplicated speech, cleaned transcript accuracy, asset authenticity, commercial-platform rights, caption safe zones and export specs. Final human approval is required before publishing.
 
-- The project is intentionally independent, with no dependency on old scripts or the repository's existing content engine.
-- Keep human-approved artefacts versioned. Raw recordings must remain unchanged.
-- Separate LLM planning from deterministic media execution for auditability and re-renders.
-- Avoid provider lock-in: Claude Code and Codex should both follow the project contracts.
-- Run batch production only after a 2-5 episode quality pilot validates edit and review costs.
+## Artifact contracts
+
+- `raw_transcript.json`: words, start/end in original recording time, clip ID, confidence where available.
+- `selects.edl.json`: chosen clip ranges with rationale, confidence and review flags.
+- `clean_master.mp4`: edited presenter footage before B-roll, never overwriting original.
+- `clean_transcript.json`: exactly what remains, timecoded to the clean master with source mapping.
+- `storyboard.json`: scenes tied to clean master timestamps with purposeful visuals.
+- `assets.manifest.json`: original/archival/generated status, rights evidence and attribution.
+- `final_review.mp4`: full edited draft for creator sign-off.
+
+Keep generated media and credentials out of Git. Agent reasoning can decide what to keep and how to illustrate it, while deterministic media tools perform timestamp-sensitive edits and re-renders.
+
+## State of implementation
+
+This document defines the intended system. S3 ingestion, ElevenLabs integration, shot/retake selection, renderers and QA must be developed and tested with real footage before the agent can automatically produce a finished video. Claude Code and Codex should both consume the same contracts, independently of any older voice/script pipelines elsewhere in the repo.

@@ -1,33 +1,27 @@
-# ELIZA episode 001: preliminary hybrid storyboard
+# ELIZA episode 001: optional visual preflight notes
 
-**Status:** Creative planning only. All timestamps provisional until the spoken recording is transcribed.  
-**Format:** 9:16 vertical, clean captions, restrained graphics. Niyi narrates throughout; show his face at human and interpretive beats.
+**Status:** Non-binding ideas only. **Not a shooting script. Not the final storyboard.**
 
-| Approx section | Visual treatment | On-camera vs B-roll | Required assets / note |
-| --- | --- | --- | --- |
-| 0:00–0:12 | Open directly on Niyi, with a restrained title hinting at the 1960s. | Camera | Strong opening delivery; avoid an animated channel intro. |
-| 0:12–0:30 | Joseph Weizenbaum, MIT/Project MAC era, physical typed/printed terminal. | B-roll | Verified Weizenbaum photo and accurate period technology; archive rights check. |
-| 0:30–0:50 | Original animated diagram: user sentence → keyword recognition → rearranged question. | B-roll / original graphics | Clear historical demonstration with a 'simplified illustration' label. Never imply it is footage of the original screen. |
-| 0:50–1:05 | Return to Niyi for the turning point, then use a tasteful typewritten line indicating the *account* of his secretary. | Camera → B-roll | No invented footage or dramatized actual photograph of the secretary. |
-| 1:05–1:25 | Back to Niyi as he reacts, with a brief close-up of the paper terminal or book cover if permitted. | Camera + archival | Give the privacy moment room to breathe. |
-| 1:25–1:45 | Visual contrast: ELIZA rule diagram and a generic modern chatbot UI. | B-roll | Original generic present-day mockup, not confusingly presented as evidence. |
-| 1:45–end | Return to face for the personal reflective payoff. | Camera | Finish naturally, without obligatory CTA or excessive motion graphics. |
+For the shoot, Niyi needs only the approved recording script. He may paraphrase, add new personal details (such as his visit to the Computer History Museum in San Francisco), repeat sentences, and naturally rework the delivery. He does not need to follow this visual plan or submit a manually edited script afterwards.
 
-## Edit principles
+**Do not lock scene timings now.** After raw footage is uploaded to S3, the video assembly skill will:
+1. Extract and transcribe the actual spoken narration using ElevenLabs with word timestamps.
+2. Select coherent takes and remove clear repetitions and abandoned starts, without stripping natural personality.
+3. Render a clean talking-head master and a matching timecoded transcript.
+4. Generate the real, precisely timed storyboard from that cleaned spoken story.
+5. Source / create rights-verified historical visuals and assemble the full edit.
 
-- Retain natural conversational pauses and appropriate filler words.
-- Remove repeated takes, abandoned starts and obvious mistakes, with an EDL tied to the actual transcript.
-- Do not hide cuts behind contextually irrelevant archival imagery.
-- Music should support the story quietly, never make the event feel like a fabricated thriller.
-- Source/archive captions must be legible on a phone and avoid false historical authority.
-- Keep the original camera/audio untouched in S3; produce a review proxy and editable plan.
+## Possible visual concepts to evaluate after the clean cut
 
-## Asset research tasks
+- A real, licensed historical portrait of Joseph Weizenbaum.
+- Archival footage or photographs of 1960s MIT computing facilities with provenance.
+- An original labelled animation explaining how ELIZA's DOCTOR script recognised keywords and returned prepared patterns.
+- A clearly attributed caption for Weizenbaum's later *account* of his secretary asking for privacy. Do not depict this anecdote as independently filmed evidence.
+- A careful visual comparison of early pattern-matching chatbots and modern AI chat interfaces, distinguishing capabilities.
+- If the museum visit appears in the selected narration, choose an appropriate illustration or optionally invite Niyi to provide an authentic personal photograph. No requirement to produce one. Do not claim any generic museum computer is an actual ELIZA machine.
 
-- Confirm rights and format of historical portrait(s).
-- Seek a licence-compatible photo of a period teletype or produce an accurate labelled illustration.
-- Design an original ELIZA response diagram.
-- Design a clear '1965 / 1966 / 1976' timeline if it helps the cut.
-- Check whether referencing the cover of *Computer Power and Human Reason* in social video is permitted.
+## Editing style
 
-**Editorial limitation:** No generated or downloaded asset is approved by this document. The video composer may use only later rights-verified entries in an asset manifest.
+Maintain an engaging mix of Niyi on camera and relevant archival/illustrative material. Return to the host at personal reflections and narrative turning points. Keep captioning clean and music restrained. Favour truthful context over decorative stock footage. All archival media requires rights verification, and all photorealistic recreations need clear treatment to avoid being mistaken for authentic period footage.
+
+The detailed machine-readable `storyboard.json` is generated **after** the clean master is reviewed. This file remains a creative idea list only.

@@ -1,20 +1,21 @@
 ---
 name: develop-story
-description: Research and write a historically grounded, first-person AI or technology story for the new standalone AI Pie storytelling series.
+description: Research and develop a factual, personal spoken AI/tech story that can be freely improvised when filming.
 ---
 
 # Develop a story
 
-Read docs/CREATIVE_DIRECTION.md and docs/ASSET_RIGHTS.md. Do not consult, import or imitate any outside or legacy voice references.
+Read `docs/CREATIVE_DIRECTION.md` and `docs/ASSET_RIGHTS.md`. Do not import or imitate the parent repository's voice packs, scripts or templates.
 
-1. Pitch a specific human-centred story, not a generic biography or 'history of X'.
-2. Identify the mystery/turning point, human stakes and modern relevance.
-3. Research with traceable primary and credible secondary sources; preserve links and clearly label uncertainties.
-4. Write a short factual timeline and claim-to-source table. Reject unverified dramatic claims.
-5. Propose 2-3 narrative angles and select with editorial feedback.
-6. Draft spoken first-person narration using a NEW conversational voice developed in this series, never fabricated personal anecdotes.
-7. Provide a script-only recording copy separately from the research and visual beat notes.
-8. Propose authentic or responsibly generated visuals; identify essential images whose rights need confirmation.
-9. Mark script and visual feasibility as pending until Niyi approves.
+1. Identify a specific compelling event, human stakes, turning point and narrative payoff.
+2. Research reputable primary/secondary sources, preserve chronological evidence and document uncertain claims.
+3. Build a claim-to-source register and develop multiple possible narrative angles. Discard unsupported dramatic claims.
+4. Draft a fresh, conversational first-person narration with Niyi. Never fabricate his experiences or certainty.
+5. Give him a clean `SCRIPT.md` that is sufficient for recording. No storyboard or strict camera choreography is required to film.
+6. Include a clear filming note separate from the spoken script: **The script is a guide, not a transcript or teleprompter obligation. Feel free to paraphrase, reorganise, add genuine personal observations, and improvise. Do not send a post-recording rewritten script. The video-assembly skill will transcribe the actual footage and use that as its editorial source of truth.**
+7. Optionally flag potentially difficult historical assets or legal/ethical risks before filming, but do not produce a locked timecoded storyboard in advance.
+8. Mark the spoken script draft/approved appropriately. Preserve the research dossier for later factual review of improvised narration.
 
-Save story metadata, notes and approved copy in episodes/<story-id>/. Keep factual sources next to their associated claims. Do not assert that unapproved prose is final.
+Save metadata, researched claims, and script in `episodes/<story-id>/`. The definitive visual storyboard is generated from the clean recording by the `assemble-video` workflow after takes are selected and trimmed.
+
+**Important:** Niyi's natural delivery is part of the creative work. The script should never be treated as a rigid contract.

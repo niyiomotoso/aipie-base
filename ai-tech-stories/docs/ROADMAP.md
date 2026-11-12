@@ -1,34 +1,32 @@
 # Roadmap and honest status
 
-This initial commit creates architecture, creative guidelines, sample metadata, and agent instructions. It does not implement autonomous video editing.
+This project has architecture, creative standards, example episode artefacts and agent instructions. It does NOT yet have a functioning S3-to-video pipeline.
 
-## Phase A: establish the format
-- [x] Separate project and first-draft production standards
-- [x] Independent Claude Code and Codex instructions
-- [x] Example episode, edit-plan and asset contracts
-- [ ] Research, write and approve 2-5 pilot stories
-- [ ] Record pilot footage and lock initial visual direction
+## Phase A: pilot storytelling
+- [x] Independent creative project and agents
+- [x] ELIZA research and first narration draft
+- [x] Recording script can be freely improvised; storyboard deferred until after trimming
+- [ ] Film and upload a pilot recording to private S3
+- [ ] Review footage and agree what an excellent clean rough cut feels like
 
-## Phase B: build the automatic talking-head editor
-- [ ] S3 ingest and encrypted, resumable local cache
-- [ ] Word-timestamp transcription and confidence scoring
-- [ ] Script/transcript alignment across paraphrases and retakes
-- [ ] Non-destructive proposed cut list and approval interface/report
-- [ ] FFmpeg rough-cut renderer, subtitle output and automated checks
-- [ ] Validate against real recordings including mistakes and improvisations
+## Phase B: transcript-first editor
+- [ ] Private S3 ingest, video/audio inventory and verified time mapping
+- [ ] ElevenLabs Speech-to-Text/Scribe integration with word timestamp export
+- [ ] Retake/false start detection, semantic alignment, and conservative EDL
+- [ ] Produce clean presenter master from raw clips without destructive edits
+- [ ] Recalculate kept speech into a clean, timestamped final transcript
+- [ ] Test against genuine improvisation, repeated takes and factual corrections
 
-## Phase C: visual storytelling engine
-- [ ] Scene and B-roll beat planner grounded in actual narration
-- [ ] Asset search, rights checking, downloading and provenance store
-- [ ] AI illustration generator with disclosure/provenance
-- [ ] Historical stills, video, graphics, crops and sound mix composition
-- [ ] Visual QA and human review loop
+## Phase C: automatic visual storytelling
+- [ ] Generate a precise post-trim storyboard from the clean master
+- [ ] Discover usable archives and validate provenance, licence and attribution
+- [ ] Produce original diagrams and clearly marked AI reconstructions
+- [ ] Assemble historical B-roll, captions, music and presenter footage deterministically
+- [ ] Automated QA and final human review
 
-## Phase D: batch production
-- [ ] S3 render outputs and versioned approvals
-- [ ] Queue of episode jobs with resumable failed stages
-- [ ] Batch filming with parallel post-production
-- [ ] Social export presets, captions and packaging
-- [ ] Performance-informed feedback to the NEW storytelling guide
+## Phase D: repeatable batches
+- [ ] Resumable jobs and S3 storage for intermediate/final artefacts
+- [ ] Platform export presets and approval workflow
+- [ ] Optimise for repeatable production of 20 episodes across two filming days
 
-Build deterministic media components before trying to let an agent do everything in a single prompt. Test the quality of a complete episode before scaling to 20.
+**Immediate next step:** shoot the ELIZA episode in the natural voice, including spontaneous observations. The first real file is the test fixture for building the media automation.
