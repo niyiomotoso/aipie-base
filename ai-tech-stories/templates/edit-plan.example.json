@@ -1,0 +1,37 @@
+{
+  "episode_id": "pilot-001",
+  "version": 1,
+  "source_media": "local/episode-001-camera.mp4",
+  "source_transcript": "local/episode-001-transcript.json",
+  "approved": false,
+  "cuts": [
+    {
+      "in_seconds": 0.5,
+      "out_seconds": 19.4,
+      "reason": "Opening take, reviewed and selected",
+      "confidence": 0.98
+    },
+    {
+      "in_seconds": 25.1,
+      "out_seconds": 56.9,
+      "reason": "Best continuous take, no changed meaning",
+      "confidence": 0.92
+    }
+  ],
+  "b_roll_scenes": [
+    {
+      "at_output_seconds": 8,
+      "duration_seconds": 4.5,
+      "asset_id": "asset-example-01",
+      "authenticity": "genuine_archive",
+      "rights_status": "pending",
+      "approved": false
+    }
+  ],
+  "caption_style": "pending",
+  "output": {
+    "aspect_ratio": "9:16",
+    "target_resolution": "1080x1920",
+    "review_only": true
+  }
+}

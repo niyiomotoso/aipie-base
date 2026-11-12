@@ -1,0 +1,48 @@
+{
+  "id": "pilot-001",
+  "status": "idea",
+  "title": "An intriguing historical AI story",
+  "angle": "What genuinely surprising decision or reaction makes this a story?",
+  "estimated_seconds": 90,
+  "narrative": {
+    "hook": "",
+    "setting": "",
+    "turning_point": "",
+    "payoff": "",
+    "personal_observation": ""
+  },
+  "claims": [
+    {
+      "id": "claim-001",
+      "statement": "A factual claim to verify",
+      "source_urls": [],
+      "verified": false,
+      "notes": ""
+    }
+  ],
+  "script": {
+    "status": "draft",
+    "text": "",
+    "approved_by": null
+  },
+  "recording": {
+    "s3_raw_prefix": null,
+    "local_source_files": []
+  },
+  "visual_brief": {
+    "on_camera_priority": [
+      "opening",
+      "personal reflection",
+      "payoff"
+    ],
+    "essential_assets": [],
+    "optional_assets": []
+  },
+  "approvals": {
+    "research": false,
+    "script": false,
+    "visual_feasibility": false,
+    "rough_cut": false,
+    "final_video": false
+  }
+}

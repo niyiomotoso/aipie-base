@@ -1,0 +1,20 @@
+{
+  "episode_id": "pilot-001",
+  "assets": [
+    {
+      "id": "asset-example-01",
+      "source_url": "https://example.org/archive/reference",
+      "creator": "Unknown",
+      "media_type": "image",
+      "relevance": "Visually supports the referenced historical scene",
+      "authenticity": "genuine_archive",
+      "rights_status": "pending",
+      "licence": null,
+      "licence_evidence_url": null,
+      "attribution_required": null,
+      "permitted_platforms": [],
+      "downloaded_path": null,
+      "notes": "Do not use until rights are verified"
+    }
+  ]
+}
