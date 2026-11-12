@@ -1,0 +1,40 @@
+{
+  "id": "eliza-001",
+  "title": "The chatbot that unsettled its creator",
+  "status": "first_draft",
+  "subject": "Joseph Weizenbaum and ELIZA at MIT",
+  "type": "historical-tech-story",
+  "intended_audience": "AI-curious general audience",
+  "format": "hybrid_on_camera_archival",
+  "estimated_duration_seconds": {
+    "min": 100,
+    "max": 120
+  },
+  "core_question": "Why did the way people responded to an early chatbot unsettle its creator?",
+  "story_angle": "An inventor confronting the gap between a machine's actual behaviour and what people believe it understands",
+  "sources": [
+    "https://courses.cs.umbc.edu/undergraduate/CMSC331/resources/papers/eliza.january1966.html",
+    "https://findingeliza.org/overview.html",
+    "https://dome.mit.edu/entities/archivalmaterial/10076e5d-bf7f-4bda-80a1-e1622a356715",
+    "https://sites.google.com/view/elizaarchaeology/blog/3-weizenbaums-secretary",
+    "https://link.springer.com/article/10.1007/s00146-026-03086-7"
+  ],
+  "files": {
+    "research": "RESEARCH.md",
+    "script": "SCRIPT.md",
+    "storyboard": "STORYBOARD.md"
+  },
+  "guards": {
+    "independent_voice": true,
+    "secretary_claim": "attribute_to_Weizenbaum",
+    "no_unlicensed_assets": true,
+    "final_review_required": true
+  },
+  "approvals": {
+    "research": false,
+    "script": false,
+    "visual_feasibility": false,
+    "recording": false,
+    "final_video": false
+  }
+}
