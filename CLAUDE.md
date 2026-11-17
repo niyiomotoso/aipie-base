@@ -51,3 +51,13 @@ Target length: 150-180 words (~60 seconds spoken).
 - Weekly outputs go in `outputs/YYYY-WNN/`
 - Reddit credentials are in environment variables, never hardcoded
 - If a source fails (e.g., TikTok is down), continue with remaining sources
+
+## Git
+
+**Work directly on `main`.** There is one contributor to this repo, so feature
+branches and pull requests add ceremony without adding review. Commit to `main`,
+do not branch, and do not open PRs unless explicitly asked.
+
+Note: the `150-180 words` target above belongs to the script-generation skills
+(`generate-scripts`, `write-script`). It does **not** govern the video editing
+skills — an edited reel is as long as the unique content is.
