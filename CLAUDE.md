@@ -52,6 +52,12 @@ Target length: 150-180 words (~60 seconds spoken).
 - Reddit credentials are in environment variables, never hardcoded
 - If a source fails (e.g., TikTok is down), continue with remaining sources
 
+## Subprojects
+
+`ai-tech-stories/` is a standalone storytelling project with its own instructions
+in `ai-tech-stories/AGENTS.md` — read that before working in there. It has no
+`CLAUDE.md` of its own; one tool-agnostic file is deliberate.
+
 ## Git
 
 **Work directly on `main`.** There is one contributor to this repo, so feature
