@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Ingest trending posts from Reddit using public JSON endpoints.
 No API key or authentication required.

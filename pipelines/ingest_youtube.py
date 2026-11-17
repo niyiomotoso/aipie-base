@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Ingest trending AI/tech videos from YouTube using yt-dlp search.
 No API key required — uses YouTube search via yt-dlp.

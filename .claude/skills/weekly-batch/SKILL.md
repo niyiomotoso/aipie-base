@@ -34,6 +34,8 @@ Report top 10 scored topics.
 For the top 15 topics:
 - Note each topic's `content_type` (NEWS, HOW_TO, ROUNDUP, OPINION)
 - **Web search** each topic to understand the current conversation
+- **Freshness gate (NEWS topics):** If the underlying event is older than 10 days, DROP it. A funding round from February is not June news. Only include NEWS topics where the core event happened within the current or previous week. If web search reveals the story is old, replace it with a fresher topic from further down the scored list.
+- **Dedup against recent weeks:** Read `outputs/latest/scripts.json` to see what was already scripted. Do NOT repeat the same topic/angle from the previous 2 weeks. Topics like "best AI tools roundup", "ChatGPT memory update", or "AI tools for beginners" that have already been covered recently must be skipped unless there is a genuinely new development (new product launch, major version change, breaking news). When in doubt, skip it.
 - Generate 4 angles each (AGREE, DISAGREE, CONTRARIAN, PRACTICAL)
 - Score scriptability. Filter to topics scoring above 0.6
 - Save to `data/angles.json`
@@ -48,6 +50,7 @@ For the top 10-14 scriptable topics:
 - For ROUNDUP scripts: use Hook → Numbered list → Standout pick → CTA structure
 - Match Niyi's voice from style guide and retrieved examples
 - Save to `outputs/YYYY-WNN/scripts.json` and `outputs/latest/scripts.json`
+- In `scripts.md`, include source URLs for each script (not just in the JSON). List them as a **Sources:** section under each script entry.
 
 ### Step 6: Save outputs
 Create output folder: `outputs/YYYY-WNN/` (current year and week number).
