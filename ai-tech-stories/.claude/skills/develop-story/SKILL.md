@@ -20,6 +20,6 @@ Read `docs/CREATIVE_DIRECTION.md` and `docs/ASSET_RIGHTS.md`. Do not import or i
 
 Before calling a draft ready, perform a layperson read-through: can a nontechnical viewer follow the stakes and explain the key idea to a friend? If not, rewrite the difficult segment. Preserve natural pacing.
 
-Save metadata, researched claims, and script in `episodes/<story-id>/`. The definitive visual storyboard is generated from the clean recording by the `assemble-video` workflow after takes are selected and trimmed.
+Save metadata, researched claims, and script in `episodes/<story-id>/`. Editing the filmed result is out of scope here — the `edit-reel` skill at the repository root cuts the footage transcript-first and decides the visuals from what was actually said.
 
 **Important:** Niyi's natural delivery is part of the creative work. The script should never be treated as a rigid contract.

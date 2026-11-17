@@ -34,8 +34,7 @@ Claude Code and Codex should follow the same documented project contracts. Agent
 - templates/: example episode, edit and asset metadata contracts.
 - episodes/: each episode's research, scripts and small metadata.
 - tools/: future ingest, transcript alignment, render and QA tools.
-- .claude/skills/: Claude Code workflows.
-- .agents/skills/: Codex workflows.
+- .claude/skills/: story development workflow.
 
 ## Status
 

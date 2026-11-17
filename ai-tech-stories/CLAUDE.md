@@ -6,7 +6,9 @@ Read README.md, docs/CREATIVE_DIRECTION.md, docs/ARCHITECTURE.md and docs/ASSET_
 
 Workflow skills:
 - .claude/skills/develop-story/SKILL.md
-- .claude/skills/assemble-video/SKILL.md
+
+Video editing is **not** part of this project. It is handled by the `edit-reel`
+skill at the repository root. Do not add a video workflow here.
 
 Story principles:
 - First person when authentic, natural language, compelling tension and rigorous sourcing.
